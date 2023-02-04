@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy;
     public float timeBetweenRespawn = 2f;
     private float timeRespawnLeft;
+    int cnt = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +20,20 @@ public class EnemySpawner : MonoBehaviour
     {
         //spawnear enemigo en un spawn point random
         timeRespawnLeft -= Time.deltaTime;
-        for(int i=0; i<spawnPoints.Length; ++i)
+
+        int r = Random.Range(0, spawnPoints.Length - 1);
+        if (timeRespawnLeft <= 0)
         {
-            if (timeRespawnLeft <= 0)
-            {
-                Instantiate(enemy, spawnPoints[i].position, spawnPoints[i].rotation);
-                timeRespawnLeft = timeBetweenRespawn;
-            }
+            Instantiate(enemy, spawnPoints[r].position, spawnPoints[r].rotation);
+            timeRespawnLeft = timeBetweenRespawn;
         }
+
+        //if (timeRespawnLeft <= 0)
+        //{
+        //    Instantiate(enemy, pointPrueba.transform.position, pointPrueba.transform.rotation);
+        //    timeRespawnLeft = timeBetweenRespawn;
+        //}
+
+
     }
 }
