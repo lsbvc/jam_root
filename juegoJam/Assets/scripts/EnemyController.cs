@@ -5,33 +5,52 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform[] patrolPoints;
-    public int currentPatrolPoint;
-
+    //public Transform[] patrolPoints;
+    //public int currentPatrolPoint;
     public NavMeshAgent agent;
 
-    //Para que pare a veces y no este siempre andando
-    public float waitAtPoint = 2f;
-    private float waitCounter;
+    private float counter;
+    private float secondsType;
+    private bool wall = false;
 
     void Start()
     {
-        waitCounter = waitAtPoint;
+
     }
 
     void Update()
     {
         //  float distanceToPlayer = Vector3.Distance(transform.position, PlayerController.instance.transform.position); //distancia esqueleto - jugador
-        agent.SetDestination(CameraLook.instance.transform.position);
-      // agent.SetDestination(patrolPoints[currentPatrolPoint].position); //dice cuál es el destino
-        currentPatrolPoint++;
-        //Reinicia si acaba
-        if (currentPatrolPoint >= patrolPoints.Length)
-        {
-            currentPatrolPoint = 0;
-        }         
-        //agent.velocity = Vector3.zero; //que se pare
-     //   agent.isStopped = true; //Que no se deslice
+        if (Vector3.Distance(CameraLook.instance.transform.position, transform.position) > 1)
+            agent.SetDestination(CameraLook.instance.transform.position);
+        else
+            Destroy(gameObject);
 
+        if(wall == true)
+        {
+            counter -= Time.deltaTime;
+            agent.velocity = Vector3.zero; //que se pare
+            agent.isStopped = true; //Que no se deslice
+            if (counter <= 0)
+            {
+                wall = false;
+                agent.isStopped = false;
+            }
+        }
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag.Equals("wall1"))
+        {
+            wall = true;
+            if (gameObject.tag.Equals("Fire"))
+                counter = 2.0f;
+            else if (gameObject.tag.Equals("other"))
+                counter = 1.0f;
+            else if (gameObject.tag.Equals("Stone"))
+                counter = 0.0f;
+            Debug.Log("Muro");
+        }
     }
 }
