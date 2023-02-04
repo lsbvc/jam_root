@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy;
     public float timeBetweenRespawn = 2f;
     private float timeRespawnLeft;
+    
     int cnt = 0;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
         if (timeRespawnLeft <= 0)
         {
             Instantiate(enemy, spawnPoints[r].position, spawnPoints[r].rotation);
+            //  AudioManager.instance.PlayTraslation();
             timeRespawnLeft = timeBetweenRespawn;
         }
 
