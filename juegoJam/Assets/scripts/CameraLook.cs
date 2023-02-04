@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraLook : MonoBehaviour
 {
-    public float sensibility = 100;
+    public float sensibility = 200;
     public Transform playerBody;
     public static CameraLook instance;
 

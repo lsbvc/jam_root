@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 392040113459962438}
   m_Layer: 0
   m_Name: StoneVirus
-  m_TagString: Fire
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 312257561}
+  audio1: {fileID: 0}
 --- !u!195 &312257561
 NavMeshAgent:
   m_ObjectHideFlags: 0
