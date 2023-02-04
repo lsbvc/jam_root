@@ -9,28 +9,31 @@ public class EnemyController : MonoBehaviour
     //public int currentPatrolPoint;
     public NavMeshAgent agent;
 
+	// Generate enemy's name:
+	public string name = "";
+
     private float counter;
     private float secondsType;
     private bool wall = false;
-   // public AudioSource audio1;
+    public AudioSource audio1;
 
     void Start()
     {
-      //  audio1.Play();
+		name = newName();
+        audio1.Play();
     }
 
     void Update()
     {
         //Virus is in root you lose 
         if (Vector3.Distance(CameraLook.instance.transform.position, transform.position) > 1)
-            agent.SetDestination(CameraLook.instance.transform.position);
+        	agent.SetDestination(CameraLook.instance.transform.position);
         else
         {
-            GameManager.instance.GameOver();
-           // audio1.Stop();
+            //GameManager.instance.GameOver();
+            //audio1.Stop();
             //AudioManager.instance.StopTraslation();
-            Destroy(gameObject);
-            Debug.Log("Delete");
+            Destroy(gameObject);  
         }
 
         if(wall == true)
@@ -48,26 +51,15 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("wall2"))
+        if(other.tag.Equals("wall1"))
         {
             wall = true;
             if (gameObject.tag.Equals("Fire"))
                 counter = 2.0f;
-            else if (gameObject.tag.Equals("Fence"))
+            else if (gameObject.tag.Equals("other"))
                 counter = 1.0f;
             else if (gameObject.tag.Equals("Stone"))
                 counter = 0.0f;
-            Debug.Log("Muro");
-        }
-        if (other.tag.Equals("wall1"))
-        {
-            wall = true;
-            if (gameObject.tag.Equals("Fire"))
-                counter = 1.0f;
-            else if (gameObject.tag.Equals("Fence"))
-                counter = 0.0f;
-            else if (gameObject.tag.Equals("Stone"))
-                counter = 2.0f;
             Debug.Log("Muro");
         }
     }
@@ -80,7 +72,38 @@ public class EnemyController : MonoBehaviour
             GameManager.instance.UpdatePoints(3);
         else if (Vector3.Distance(CameraLook.instance.transform.position, transform.position) > 1)
             GameManager.instance.UpdatePoints(1);
+		currentEnemies.Remove(name);
         
         Destroy(gameObject);    
     }
+
+
+	// Enemy name generation
+	static string[] pathList = {
+		"/usr/",
+		"/bin/",
+		"/etc/"
+	};
+
+	static string[] nameList = {
+		"virus.vir",
+		"trojan.vir",
+		"covid.vir",
+		"spy.vir"
+	};
+
+	static public List<string> currentEnemies = new List<string>();
+
+	public string newName()
+	{
+		string ret = pathList[Random.Range(0, pathList.Length)] + nameList[Random.Range(0, nameList.Length)];
+
+		if (currentEnemies.Contains(ret))
+		{
+			Destroy(gameObject);
+		}
+		currentEnemies.Add(ret);
+
+		return ret;
+	}
 }
