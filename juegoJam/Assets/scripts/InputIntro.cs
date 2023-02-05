@@ -10,6 +10,7 @@ public class InputIntro : MonoBehaviour
 	public void clearInput()
 	{
 		InputField.text = "";
+		autoFocus();
 	}
 
     public void autoFocus()
@@ -30,6 +31,8 @@ public class InputIntro : MonoBehaviour
     public void GetInputText (string InputText)
     {
 	    Debug.Log(InputText);
+	    if (InputText == "start")
+		Debug.Log("SIIII");
 //	if InputText == start; next scene
 //	else if InputText == exit; exit.
 
