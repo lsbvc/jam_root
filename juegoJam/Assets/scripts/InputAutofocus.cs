@@ -28,11 +28,34 @@ public class InputAutofocus : MonoBehaviour
     {
         
     }
-    public void GetInputText (string InputText)
+
+    public void GetInputText(string InputText)
     {
-	    Debug.Log(InputText);
-//	Add functions to check and kill virus.
-
+		// Add functions to check and kill virus.
+		if (InputText.StartsWith("rm "))
+		{
+			InputText = InputText.Substring(3);
+			if (EnemyController.currentEnemies.Contains(InputText))
+			{
+				EnemyController[] enemiesRefs = GameObject.FindObjectsOfType<EnemyController>();
+				foreach (EnemyController en in enemiesRefs)
+				{
+					if (en.name == InputText)
+					{
+						Destroy(en.gameObject);
+						EnemyController.currentEnemies.Remove(InputText);
+						break;
+					}
+				}
+			}
+			else
+			{
+				// Fail sound or some kind of bad input feedback.
+			}
+		}
+		else
+		{
+			// Fail sound or some kind of bad input feedback.
+		}
     }
-
 }
