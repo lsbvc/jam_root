@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
 	// Generate enemy's name:
 	public string name = "";
+	public TMP_Text TextField;
 
     private float counter;
     private float secondsType;
@@ -20,6 +22,8 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
 		name = newName();
+		Debug.Log(name);
+		TextField.text = name;
         audio1.Play();
     }
 
