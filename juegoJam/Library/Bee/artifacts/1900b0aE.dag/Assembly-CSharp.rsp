@@ -355,6 +355,7 @@
 "Assets/scripts/EnemySpawner.cs"
 "Assets/scripts/GameManager.cs"
 "Assets/scripts/InputAutofocus.cs"
+"Assets/scripts/InputIntro.cs"
 "Assets/scripts/PointsController.cs"
 "Assets/scripts/Timer.cs"
 "Assets/scripts/UIManager.cs"
