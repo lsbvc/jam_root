@@ -22,7 +22,11 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
 		name = newName();
-		Debug.Log(name);
+		if (name == "")
+		{
+			Destroy(gameObject);
+			return;
+		}
 		TextField.text = name;
         audio1.Play();
     }
@@ -104,7 +108,8 @@ public class EnemyController : MonoBehaviour
 
 		if (currentEnemies.Contains(ret))
 		{
-			Destroy(gameObject);
+			Debug.Log("Enemy: " + ret + " already exists!");
+			return "";
 		}
 		currentEnemies.Add(ret);
 
