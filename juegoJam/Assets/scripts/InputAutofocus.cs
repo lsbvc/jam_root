@@ -10,6 +10,7 @@ public class InputAutofocus : MonoBehaviour
 	public void clearInput()
 	{
 		InputField.text = "";
+		autoFocus();
 	}
 
     public void autoFocus()
