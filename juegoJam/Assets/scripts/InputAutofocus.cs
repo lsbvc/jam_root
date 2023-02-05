@@ -31,6 +31,12 @@ public class InputAutofocus : MonoBehaviour
 
     public void GetInputText(string InputText)
     {
+
+		if (InputText == "exit")
+		{
+			Debug.Log("exit");
+			Application.Quit();
+		}
 		// Add functions to check and kill virus.
 		if (InputText.StartsWith("rm "))
 		{
