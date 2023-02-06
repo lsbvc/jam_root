@@ -43,7 +43,10 @@ public class InputAutofocus : MonoBehaviour
 			Application.Quit();
 		}
 	    if (InputText == "reset")
+		{
+			EnemyController.currentEnemies.Clear();
 		    SceneManager.LoadScene("Intro");
+		}
 		// Add functions to check and kill virus.
 		if (InputText.StartsWith("rm "))
 		{
