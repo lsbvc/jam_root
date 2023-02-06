@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("FIN");
         UIManager.instance.end.gameObject.SetActive(true);
-        //Change scene to main menu
+        Timer.instance.timerIsRunning = false; 
+	//Change scene to main menu
     }
     public void GameWin()
     {
