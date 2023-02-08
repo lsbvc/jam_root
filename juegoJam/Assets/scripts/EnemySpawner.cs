@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyMetal;
     private GameObject enemy;
     int r2 = 0;
-    public float timeBetweenRespawn = 2f;
+    public float timeBetweenRespawn = 7f;
     private float timeRespawnLeft;
     
     int cnt = 0;

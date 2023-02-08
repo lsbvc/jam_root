@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   enemyStone: {fileID: 3465550172300027378, guid: 389c993461be2964ab8166bd8701a017, type: 3}
   enemyFire: {fileID: 4879217201118177066, guid: 17962068d3cb53147a81e4122d304841, type: 3}
   enemyMetal: {fileID: 6739597247482786729, guid: d01a50fe53918064dac0ab6a0452dbd2, type: 3}
-  timeBetweenRespawn: 2
+  timeBetweenRespawn: 7
 --- !u!4 &1807835839
 Transform:
   m_ObjectHideFlags: 0
